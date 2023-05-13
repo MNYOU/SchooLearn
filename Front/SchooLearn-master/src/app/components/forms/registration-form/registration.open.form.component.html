@@ -1,0 +1,13 @@
+<div class="registration-form__box">
+  <mat-radio-group aria-label="Select an option" [(ngModel)]="role">
+    <mat-radio-button value="teacher">Представитель образовательной организации</mat-radio-button>
+    <mat-radio-button value="student">Ученик</mat-radio-button>
+  </mat-radio-group>
+
+  <div class="registration-form__button-box">
+    <button
+      (click)="goToRegistrationPage()">
+      <p>Далее</p>
+    </button>
+  </div>
+</div>

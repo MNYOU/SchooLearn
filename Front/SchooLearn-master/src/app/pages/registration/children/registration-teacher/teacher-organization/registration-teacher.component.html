@@ -1,0 +1,234 @@
+<!--<p>registration-student works!</p>-->
+<!--<div *ngIf="phase === 1">-->
+<!--  <label>Name:</label>-->
+<!--  <input type="text" formControlName="name">-->
+<!--  <label>Email:</label>-->
+<!--  <input type="email" formControlName="email">-->
+<!--  <button (click)="nextPhase()">Next</button>-->
+<!--</div>-->
+
+<!--<div *ngIf="phase === 2">-->
+<!--  <label>Age:</label>-->
+<!--  <input type="number" formControlName="age">-->
+<!--  <button (click)="prevPhase()">Previous</button>-->
+<!--  <button (click)="nextPhase()">Next</button>-->
+<!--</div>-->
+
+<!--<div *ngIf="phase === 3">-->
+<!--  <label>Street:</label>-->
+<!--  <input type="text" formControlName="address.street">-->
+<!--  <label>City:</label>-->
+<!--  <input type="text" formControlName="address.city">-->
+<!--  <label>State:</label>-->
+<!--  <input type="text" formControlName="address.state">-->
+<!--  <button (click)="prevPhase()">Previous</button>-->
+<!--  <button (click)="submit()">Submit</button>-->
+<!--</div>-->
+<div class="form-box">
+<form
+  class="registrationForm"
+  [formGroup]="registrationTeacherForm"
+  (ngSubmit)="onSubmitRegistration()"
+>
+  <div class="alert alert-danger" *ngIf="_authService.error$ | async as error">
+    {{error}}
+  </div>
+  <div *ngIf="phase === 1" class="registrationForm__group">
+    <div class="box-company__control">
+      <div class="box-company__title-box">
+        <p>Выберите образовательную организацию</p>
+        <a [routerLink]="['/registration/company/step1']" class="registration-company-link">Регистрация</a>
+      </div>
+      <div class="box-select">
+        <mat-select [formControlName]="'companyName'"
+                    class="select-company"
+                    id="companyName"
+                    type="text">
+          <mat-option *ngFor="let state of states"
+                      [value]="state">
+            {{state}}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div
+        class="registForm__error"
+        *ngIf="registrationTeacherForm.controls['companyName'].invalid
+          && registrationTeacherForm.controls['companyName'].touched"
+      >
+        Обязательно для заполнения
+      </div>
+    </div>
+    <div class="registrationForm__subtext-box">
+      <app-subtext class="registrationForm__subtext-box">
+        Если Вашей образовательной организации нет в списке, Вы можете зарегистрировать её
+      </app-subtext>
+    </div>
+
+    <div class="buttons-box">
+      <button
+        class="form-button form-button__back"
+        (click)="back()">
+        <p class="form-button__text">
+          Назад
+        </p>
+      </button>
+      <button
+        class="form-button form-button__next"
+        [disabled]="registrationTeacherForm.controls['companyName'].invalid"
+        (click)="nextPhase()">
+        <div class="form-button__next__img-box">
+          <p class="form-button__text">
+            Далее
+          </p>
+          <img src="/assets/arrow-right.svg" alt="next">
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="phase === 2" class="registrationForm__group">
+
+    <div class="registrationForm__controls-box">
+      <div class="registrationForm__control-box">
+        <label for="teacherKey" [ngStyle]="{'color': registrationTeacherForm.controls['teacherKey'].touched && registrationTeacherForm.controls['teacherKey'].invalid ? 'red' : 'black'}" class="registrationForm__label">Введите код образовательной организации *</label>
+        <input
+          class="registrationForm__control"
+          id="teacherKey"
+          type="text"
+          name="teacherKey"
+          [formControlName]="'teacherKey'"
+        >
+        <div
+          class="registrationForm__error"
+          *ngIf="registrationTeacherForm.controls['teacherKey'].invalid
+            && registrationTeacherForm.controls['teacherKey'].touched"
+        >
+          Обязательно для заполнения
+        </div>
+      </div>
+
+      <div class="registrationForm__control-box">
+        <label for="teacherName" [ngStyle]="{'color': registrationTeacherForm.controls['teacherName'].touched && registrationTeacherForm.controls['teacherName'].invalid ? 'red' : 'black'}" class="registrationForm__label">Введите никнейм **</label>
+        <input
+          class="registrationForm__control"
+          id="teacherName"
+          type="text"
+          name="teacherName"
+          [formControlName]="'teacherName'"
+        >
+        <div
+          class="registrationForm__error"
+          *ngIf="registrationTeacherForm.controls['teacherName'].invalid
+            && registrationTeacherForm.controls['teacherName'].touched"
+          >
+          Обязательно для заполнения
+        </div>
+      </div>
+
+      <div class="registrationForm__control-box">
+        <label for="teacherLogin" [ngStyle]="{'color': registrationTeacherForm.controls['teacherLogin'].touched && registrationTeacherForm.controls['teacherLogin'].invalid ? 'red' : 'black'}" class="registrationForm__label">Введите логин</label>
+        <input
+          class="registrationForm__control"
+          id="teacherLogin"
+          type="text"
+          name="teacherLogin"
+          [formControlName]="'teacherLogin'"
+        >
+        <div
+          class="registrationForm__error"
+          *ngIf="registrationTeacherForm.controls['teacherLogin'].invalid
+            && registrationTeacherForm.controls['teacherLogin'].touched"
+        >
+          Обязательно для заполнения. Придумайте логин не менее 8 символов, он должен включать строчные и заглавные буквы
+        </div>
+      </div>
+      <div class="registrationForm__control-box">
+        <label for="teacherEmail" [ngStyle]="{'color': registrationTeacherForm.controls['teacherEmail'].touched && registrationTeacherForm.controls['teacherEmail'].invalid ? 'red' : 'black'}" class="registrationForm__label">Введите email</label>
+        <input
+          class="registrationForm__control"
+          id="teacherEmail"
+          type="email"
+          name="teacherEmail"
+          [formControlName]="'teacherEmail'"
+        >
+        <div
+          class="registrationForm__error"
+          *ngIf="registrationTeacherForm.controls['teacherEmail'].invalid
+               && registrationTeacherForm.controls['teacherEmail'].touched">
+          <p>
+            Обязательно для заполнения.
+          </p>
+        </div>
+      </div>
+
+      <div class="registrationForm__control-box">
+        <label for="password" [ngStyle]="{'color': registrationTeacherForm.controls['teacherPassword'].touched && registrationTeacherForm.controls['teacherPassword'].invalid ? 'red' : 'black'}" class="registrationForm__label">Введите пароль</label>
+        <input
+          class="registrationForm__control"
+          id="password"
+          type="password"
+          [formControlName]="'teacherPassword'"
+        >
+        <div
+          class="registrationForm__error"
+          *ngIf="registrationTeacherForm.controls['teacherPassword'].invalid
+              && registrationTeacherForm.controls['teacherPassword'].touched">
+          <p>
+            Обязательно для заполнения. Ваш пароль легко подобрать.
+            Придумайте пароль не менее 8 символов.
+            Используйте заглавные буквы, цифры и специальные символы
+          </p>
+        </div>
+      </div>
+
+      <div class="registrationForm__control-box">
+        <label for="repeatPassword" [ngStyle]="{'color': registrationTeacherForm.controls['repeatTeacherPassword'].touched && registrationTeacherForm.controls['repeatTeacherPassword'].invalid ? 'red' : 'black'}" class="registrationForm__label" >Повторите пароль</label>
+        <input
+          class="registrationForm__control"
+          id="repeatPassword"
+          type="password"
+          [formControlName]="'repeatTeacherPassword'"
+        >
+        <div
+          class="registrationForm__error"
+          *ngIf="registrationTeacherForm.controls['repeatTeacherPassword'].invalid
+              && registrationTeacherForm.controls['repeatTeacherPassword'].touched">
+          <p>
+            Пароли не совпадают
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="registrationForm__subtext-box">
+      <app-subtext class="registrationForm__subtext-box">
+        * Код находится в письме с подтверждением регистрации ОО
+      </app-subtext>
+      <app-subtext class="registrationForm__subtext-box">
+        ** Рекомендуем поле “Введите никнейм” заполнять ФИО
+      </app-subtext>
+    </div>
+
+    <div class="buttons-box">
+      <button
+        (click)="prevPhase()"
+        class="form-button form-button__back">
+        <p class="form-button__text">
+          Назад
+        </p>
+      </button>
+      <button
+        class="form-button form-button__next"
+        type="submit"
+        [disabled]="registrationTeacherForm.invalid || submitted || registrationTeacherForm.disabled"
+      >
+        <div class="form-button__next__img-box">
+          <p class="form-button__text">
+            Создать аккаунт
+          </p>
+          <img src="/assets/arrow-right.svg" alt="next">
+        </div>
+      </button>
+    </div>
+  </div>
+</form>
+</div>

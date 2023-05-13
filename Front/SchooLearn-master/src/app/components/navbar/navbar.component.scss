@@ -1,0 +1,26 @@
+.activeLink {
+  color: var(--purple);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+
+  &__item {
+    margin-right: 51px;
+  }
+
+  &__text-white {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: var(--white);
+  }
+
+  &__text-black {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: var(--black);
+  }
+}

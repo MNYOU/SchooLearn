@@ -1,0 +1,22 @@
+{
+  "/task/*": {
+    "target": "http://mnyouone-001-site1.ctempurl.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/rating/*": {
+    "target": "http://mnyouone-001-site1.ctempurl.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
+  "/login/*": {
+    "target": "http://mnyouone-001-site1.ctempurl.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
+
+

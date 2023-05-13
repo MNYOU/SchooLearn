@@ -1,0 +1,101 @@
+<!--<p>step1-registration-company-form works!</p>-->
+<!--<h1>Шаг 1 - информация о пользователе</h1>-->
+<!--<div>-->
+<!--  <input [(ngModel)]="user.name" placeholder="Имя">-->
+<!--  <input [(ngModel)]="user.surname" placeholder="Фамилия">-->
+<!--</div>-->
+<!--<button (click)="next()">Далее</button>-->
+
+<div class="form-box">
+  <form
+    class="registrationForm"
+    [formGroup]="registrationForm"
+    (ngSubmit)="onSubmitRegistration()"
+  >
+    <div class="alert alert-danger" *ngIf="_authService.error$ | async as error">
+      {{error}}
+    </div>
+
+    <div class="registrationForm__group">
+      <div class="box-company__control">
+
+      </div>
+      <label for="email">email</label>
+      <input
+        id="email"
+        type="email"
+        name="email"
+        [formControlName]="'companyEmail'"
+      >
+      <div
+        class="registrationForm__error"
+        *ngIf="registrationForm.controls['companyEmail'].invalid
+        && registrationForm.controls['companyEmail'].touched">
+        Обязательно для заполнения или неверный формат
+      </div>
+    </div>
+
+    <div class="registrationForm__group">
+      <label for="name">Название</label>
+      <input
+        id="name"
+        type="text"
+        name="name"
+        [formControlName]="'companyName'"
+      >
+      <div
+        class="registrationForm__error"
+        *ngIf="registrationForm.controls['companyName'].invalid
+           && registrationForm.controls['companyName'].touched"
+      >
+        Обязательно для заполнения
+      </div>
+    </div>
+
+    <div class="registrationForm__group">
+      <label for="INN">ИНН</label>
+      <input
+        id="INN"
+        type="number"
+        name="INN"
+        [formControlName]="'companyINN'"
+      >
+      <div
+        class="registrationForm__error"
+        *ngIf="registrationForm.controls['companyINN'].invalid
+           && registrationForm.controls['companyINN'].touched"
+      >
+        Обязательно для заполнения
+      </div>
+    </div>
+
+    <div class="registrationForm__group">
+      <label for="name">Имя</label>
+      <input
+        id="url"
+        type="url"
+        name="url"
+        [formControlName]="'companyUrl'"
+      >
+      <div
+        class="registrationForm__error"
+        *ngIf="registrationForm.controls['companyUrl'].invalid
+           && registrationForm.controls['companyUrl'].touched"
+      >
+        Обязательно для заполнения
+      </div>
+    </div>
+
+
+    <div>
+      <button
+        type="submit"
+        [disabled]="registrationForm.invalid || submitted || registrationForm.disabled"
+      >
+        <!--      (click)="onSubmit()"-->
+        <!--    >-->
+        Войти
+      </button>
+    </div>
+  </form>
+</div>

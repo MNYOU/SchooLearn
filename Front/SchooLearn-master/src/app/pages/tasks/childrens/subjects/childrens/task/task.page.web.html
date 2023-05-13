@@ -1,0 +1,7 @@
+<div *ngIf="task$ | async as task">
+  <p>Вы участвуете в соревновании по {{task.subject}}</p>
+  <p> Уровень: {{task.level}} </p>
+  <p>{{task.task}}</p>
+</div>
+
+

@@ -1,0 +1,105 @@
+.registrationForm {
+  &__subtext-box {
+    margin-bottom: 60px;
+  }
+
+  &__group {
+    margin: 0 auto;
+    width: 1060px;
+  }
+
+  &__controls-box {
+    padding: 60px 60px 0;
+    background: #E6E6E6;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+
+    input.ng-touched.ng-invalid {
+      border: solid red 2px;
+    }
+
+    input.ng-touched.ng-valid {
+      border: solid green 2px;
+    }
+  }
+
+  &__control-box {
+    height: 150px;
+  }
+
+  &__label {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+    color: #000000;
+    margin-bottom: 20px;
+  }
+
+  &__control {
+    background: #FFFFFF;
+    border-radius: 25px;
+    width: 940px;
+    height: 50px;
+    font-size: 22px;
+    padding: 1rem 1rem;
+    margin-bottom: 10px;
+  }
+
+  &__error {
+    max-width: 520px;
+    position: relative;
+    background: #FFFFFF;
+    border: 0.5px solid #918FAC;
+    left: 470px;
+    padding: 9px;
+    display: inline-block;
+
+    & p {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+
+      color: #918FAC;
+    }
+  }
+}
+
+.buttons-box {
+  justify-content: space-between;
+  display: flex;
+}
+
+.form-button {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  padding: 11px 28px;
+
+  &__text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+
+    color: #080F1D;
+    margin-right: 10px;
+  }
+
+  &__back {
+    background: #FFFFFF;
+    border: 2px solid #D3AAF8;
+  }
+
+  &__next {
+    background: #D3AAF8;
+
+    &__img-box {
+      display: flex;
+
+      & img {
+        margin-left: auto;
+        width: 20px;
+        height: 27px;
+      }
+    }
+  }
+}

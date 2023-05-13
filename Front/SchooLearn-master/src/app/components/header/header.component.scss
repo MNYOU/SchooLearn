@@ -1,0 +1,102 @@
+.header {
+  background-color: #547DF8;
+  border-bottom: 0.5px solid #DBDCD7;
+  transform: rotate(0.08deg);
+  &__box {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  &__logo {
+    display: block;
+    float: left;
+  }
+
+  &__account {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: var(--black)
+  }
+
+  &__list{
+    margin-left: 80px;
+    margin-right: auto;
+  }
+
+  &__btn-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: var(--purple)
+  }
+}
+
+
+.nav__account-authorization {
+  cursor: pointer;
+  margin-left: 30px;
+  border: 1px solid #B169F3;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  background: #FFFFFF;
+  padding: 5px 30px;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  color: #C792F8;
+}
+
+.nav__accountBox {
+  width: 330px;
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.loginText {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  color: #000000;
+}
+
+.btn {
+  margin-left: 30px;
+  padding: 5px 30px;
+  border: 1px solid var(--violet);
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+  background: #FFFFFF;
+}
+
+.btn_text {
+  color: var(--fourth_violet);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+}
+
+.log-reg__button {
+  padding: 5px 25px;
+  background-color: unset;
+  border: 0.5px solid #000000;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 25px;
+}
+
+.log-reg__text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #000000;
+}
+
+.btn-open {
+  background-color: unset;
+  border: 0.5px solid #000000;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 25px;
+}

@@ -1,0 +1,46 @@
+<form class="authorizationForm" [formGroup]="authorizationForm">
+  <div class="authorizationForm__group">
+    <label for="name">Имя</label>
+    <input id="name" type="text" name="name" [formControlName]="'userName'">
+    <div class="authorizationForm__error" *ngIf="authorizationForm.controls['userName'].invalid">
+      Обязательно для заполнения
+    </div>
+  </div>
+  <div class="authorizationForm__group">
+    <label for="email">Имя</label>
+    <input id="email" type="email" name="email" [formControlName]="'userEmail'">
+    <div class="authorizationForm__error" *ngIf="authorizationForm.controls['userEmail'].invalid">
+      Обязательно для заполнения или неверный формат
+    </div>
+  </div>
+  <div class="authorizationForm__group">
+    <label for="password">Пароль</label>
+    <input id="password" type="password" [formControlName]="'userPassword'">
+    <div class="authorizationForm__error" *ngIf="authorizationForm.controls['userPassword'].invalid">
+      Обязательно для заполнения
+    </div>
+  </div>
+  <div class="authorizationForm__group">
+    <label for="phone">Телефон</label>
+    <input id="phone" name="phone" [formControlName]="'userPhone'">
+    <div class="authorizationForm__error" *ngIf="authorizationForm.controls['userPhone'].invalid">
+      Обязательно для заполнения и ожидает номер телефона
+    </div>
+  </div>
+
+
+  <div>
+    <button type="submit" [disabled]="authorizationForm.invalid || authorizationForm.disable()" (click)="onSubmit()">Войти</button>
+  </div>
+</form>
+
+<!--<div>-->
+<!--  <ul>-->
+<!--    <li *ngFor="let user of users">-->
+<!--      <div> {{ user.name }}</div>-->
+<!--      <div> {{ user.email }}</div>-->
+<!--      <div> {{ user.phone }}</div>-->
+<!--      <div> {{ user.password }}</div>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</div>-->

@@ -1,0 +1,29 @@
+<div class="header">
+  <header class="header__box container">
+    <a class="header__logo" [routerLink]="['']">
+      <img src="assets/logo.svg" alt = "logo">
+    </a>
+    <nav class="header__list">
+      <app-navbar/>
+    </nav>
+    <a class="header__account" [routerLink]="['/lk']" *ngIf="nickname">
+      <span >
+        {{nickname}}
+      </span>
+    </a>
+    <button
+      (click)="showForm()"
+      custom-button
+            radius="medium"
+            color="white"
+            border="border"
+            padding="small" class="header__btn-text btn-open">
+      <span>Войти</span>
+    </button>
+    <ng-container
+         *ngIf="isFormVisible">
+      <app-login-form (registrationForm)="registrationForm()" *ngIf="isFormVisible && loginForm"></app-login-form>
+      <app-registration-form (redirectRegistrationPage)="showForm()" *ngIf="isFormVisible && !loginForm"></app-registration-form>
+    </ng-container>
+  </header>
+</div>

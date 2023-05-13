@@ -1,0 +1,82 @@
+<form
+  class="authorizationForm"
+  [formGroup]="authorizationForm"
+  (ngSubmit)="onSubmitLogin()"
+>
+  <div class="alert alert-danger" *ngIf="_authService.error$ | async as error">
+    {{error}}
+  </div>
+
+  <div class="authorizationForm__group">
+    <label for="name">Имя</label>
+    <input
+      id="name"
+      type="text"
+      name="name"
+      [formControlName]="'userName'"
+    >
+    <div
+      class="authorizationForm__error"
+      *ngIf="authorizationForm.controls['userName'].invalid
+         && authorizationForm.controls['userName'].touched"
+    >
+      Обязательно для заполнения
+    </div>
+  </div>
+<!--  <div class="authorizationForm__group">-->
+<!--    <label for="email">Имя</label>-->
+<!--    <input-->
+<!--      id="email"-->
+<!--      type="email"-->
+<!--      name="email"-->
+<!--      [formControlName]="'userEmail'"-->
+<!--    >-->
+<!--    <div-->
+<!--      class="authorizationForm__error"-->
+<!--      *ngIf="authorizationForm.controls['userEmail'].invalid-->
+<!--      && authorizationForm.controls['userEmail'].touched">-->
+<!--      Обязательно для заполнения или неверный формат-->
+<!--    </div>-->
+<!--  </div>-->
+  <div class="authorizationForm__group">
+    <label for="password">Пароль</label>
+    <input
+      id="password"
+      type="password"
+      [formControlName]="'userPassword'"
+    >
+    <div
+      class="authorizationForm__error"
+      *ngIf="authorizationForm.controls['userPassword'].invalid
+      && authorizationForm.controls['userPassword'].touched">
+      Обязательно для заполнения и должно быть больше 7 символов.
+    </div>
+  </div>
+<!--  <div class="authorizationForm__group">-->
+<!--    <label for="phone">Телефон</label>-->
+<!--    <input-->
+<!--      id="phone"-->
+<!--      name="phone"-->
+<!--      type="tel"-->
+<!--      [formControlName]="'userPhone'"-->
+<!--    >-->
+<!--    <div-->
+<!--      class="authorizationForm__error"-->
+<!--      *ngIf="authorizationForm.controls['userPhone'].invalid-->
+<!--      && authorizationForm.controls['userPhone'].touched">-->
+<!--      Обязательно для заполнения и ожидает номер телефона-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+  <div>
+    <button
+      type="submit"
+      [disabled]="authorizationForm.invalid || submitted || authorizationForm.disabled"
+    >
+<!--      (click)="onSubmit()"-->
+<!--    >-->
+      Войти
+    </button>
+  </div>
+</form>

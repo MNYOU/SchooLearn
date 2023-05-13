@@ -1,0 +1,38 @@
+.box-company {
+  &__title-box {
+    justify-content: space-between;
+    display: flex;
+  }
+
+  &__control {
+    padding: 60px;
+    height: 308px;
+    background: #E6E6E6;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+
+    & p {
+      width: 470px;
+      height: 32px;
+
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 27px;
+
+      color: #000000;
+    }
+
+    & .box-select {
+      margin-top: 20px;
+      width: 940px;
+      height: 45px;
+      background: #FFFFFF;
+      border-radius: 25px;
+      padding: 10px 15px;
+    }
+  }
+}
+
+

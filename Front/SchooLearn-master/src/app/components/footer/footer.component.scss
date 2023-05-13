@@ -1,0 +1,21 @@
+.footer {
+  background: #0C0919;
+  padding: 100px 0;
+
+   &__contacts {
+     &-title {
+       color: var(--white);
+       font-weight: 700;
+       font-size: 40px;
+       line-height: 48px;
+       margin-bottom: 30px;
+     }
+
+     &-text {
+       color: var(--white);
+       font-weight: 400;
+       font-size: 22px;
+       line-height: 27px;
+     }
+   }
+}

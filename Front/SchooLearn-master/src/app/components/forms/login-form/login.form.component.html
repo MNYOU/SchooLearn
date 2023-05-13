@@ -1,0 +1,31 @@
+<form class="login-form__box" [formGroup]="authorizationForm" (ngSubmit)="onSubmitLogin2()">
+  <div class="alert alert-danger" *ngIf="_authService.error$ | async as error">
+    {{error}}
+  </div>
+
+  <div class="login-form__control-box">
+    <label for="nickname">Никнейм:</label>
+    <input id="nickname"
+           type="text"
+           [formControlName]="'userName'"
+           class="login-form__control">
+  </div>
+
+  <div class="login-form__control-box">
+    <label for="password">Пароль:</label>
+    <input id="password"
+           type="password"
+           [formControlName]="'userPassword'"
+           class="login-form__control">
+  </div>
+  <div class="login-form__button-box">
+    <button type="submit" [disabled]="authorizationForm.invalid || submitted || authorizationForm.disabled">
+      <p>Войти</p>
+    </button>
+  </div>
+  <div class="login-form__registration-button-box">
+    <button (click)="openRegistrationForm()">
+      <p>Еще нет аккаунта?</p>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,467 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$SchooLearn-primary: mat.define-palette(mat.$indigo-palette);
+$SchooLearn-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$SchooLearn-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$SchooLearn-theme: mat.define-light-theme((
+  color: (
+    primary: $SchooLearn-primary,
+    accent: $SchooLearn-accent,
+    warn: $SchooLearn-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($SchooLearn-theme);
+
+:root {
+  --green: #B5FBD6;
+  --white: #FFFFFF;
+  --grey: #E6E6E6;
+  --light_purple: #D3AAF8;
+  --purple: #B169F3;
+  --dark_purple: #5E0155;
+  --black: #000000;
+}
+
+
+*, *:after, *:before {
+  color: var(--black);
+
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  transition: .5s ease-in-out;
+  /* добавим плавность переходов для всех элементов страницы*/
+}
+
+body {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+.container {
+  width: 100%;
+  max-width: 1330px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+//router-outlet + *  {
+//  padding: 0 16px;
+//}
+
+/* Text */
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+p {
+  margin: 0;
+}
+
+/* Hyperlink */
+
+a {
+  cursor: pointer;
+  color: var(--black);
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 0.7;
+  color: var(--light_purple);
+}
+
+/* Input */
+
+input {
+  font-size: 14px;
+  border-radius: 2px;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #BDBDBD;
+}
+
+label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+  text-transform: uppercase;
+}
+
+/* Button */
+button {
+  padding: 0.2rem 1rem;
+  border-radius: 8px;
+  color: var(--white);
+  cursor: pointer;
+}
+
+
+/*.button, button {*/
+/*  display: inline-flex;*/
+/*  align-items: center;*/
+/*  padding: 8px 16px;*/
+/*  border-radius: 2px;*/
+/*  font-size: 14px;*/
+/*  cursor: pointer;*/
+/*  background-color: #1976d2;*/
+/*  color: white;*/
+/*  border: none;*/
+/*}*/
+
+.button:hover, button:hover {
+  opacity: 0.8;
+  font-weight: normal;
+}
+
+.button:disabled, button:disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+/* Top Bar */
+
+app-top-bar {
+  width: 100%;
+  height: 68px;
+  background-color: #1976d2;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+app-top-bar h1 {
+  color: white;
+  margin: 0;
+}
+
+/* Checkout Cart, Shipping Prices */
+.cart-item, .shipping-item {
+  width: 100%;
+  min-width: 400px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 16px 32px;
+  margin-bottom: 8px;
+  border-radius: 2px;
+  background-color: #EEEEEE;
+}
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+*/
+
+
+/* Стили настраиваемых кнопок "custom-button" */
+.custom-button {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.custom-button.border {
+  border: 1px solid var(--purple);
+}
+
+// Цвета кнопок
+.custom-button.white {
+  background: var(--white);
+}
+
+.custom-button.grey {
+  background: var(--grey);
+}
+
+.custom-button.green {
+  background: var(--green);
+}
+
+.custom-button.light_purple {
+  background: var(--light_purple);
+}
+
+.custom-button.nonstandard_green {
+  background: linear-gradient(82.66deg, var(--green) 14.42%, var(--light_purple) 88.67%);
+}
+
+.custom-button.nonstandard_grey {
+  background: linear-gradient(82.66deg, var(--grey) 14.42%, var(--light_purple) 88.67%);
+}
+
+// Радиусы кнопок
+.custom-button.small_radius {
+  border-radius: 20px
+}
+.custom-button.medium_radius {
+  border-radius: 25px
+}
+.custom-button.large_radius {
+  border-radius: 30px
+}
+
+// "Padding" кастомных кнопок
+.custom-button.large_padding {
+  padding: 10px 40px;
+}
+
+.custom-button.medium-2_padding {
+  padding: 10px 30px;
+}
+
+.custom-button.medium-1_padding {
+  padding: 10px 20px;
+}
+
+.custom-button.small_padding {
+  padding: 5px 20px;
+}
+
+/* Тексты */
+.text-1 {
+  font-weight: 700;
+}
+
+.text-2 {
+  font-weight: 400;
+}
+
+
+//Цвета текстов
+.text_white-color {
+  color: var(--white)
+}
+
+.text_purple-color {
+  color: var(--purple)
+}
+
+.text_dark_purple-color {
+  color: var(--dark_purple)
+}
+
+.text_black-color {
+  color: var(--black)
+}
+
+
+
+.text_1 {
+  font-weight: 700;
+  font-size: 70px;
+  line-height: 85px;
+  color: #090815;
+}
+
+.text_2 {
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 63px;
+  color: #090815;
+}
+
+.text_3 {
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 56px;
+  color: #080F1D;
+}
+
+.text_footer {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+
+  color: #FFFFFF;
+}
+
+.text_15 {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+
+  color: #FFFFFF;
+}
+
+
+.text_4 {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  color: #080F1D;
+}
+
+.text_5 {
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 56px;
+  text-align: center;
+
+  color: #B169F3;
+}
+
+.text_6 {
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 46px;
+  text-align: center;
+
+  color: #000000;
+}
+
+.text_7 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  color: #B169F3;
+}
+
+.text_8 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  color: #000000;
+}
+
+.text_9 {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 39px;
+  color: #000000;
+}
+
+.text_10 {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 39px;
+  /* identical to box height */
+  color: #5E0155;
+}
+
+.text_11 {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 36px;
+
+  color: #000000;
+}
+
+.text_12 {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 31px;
+
+  color: #5E0155;
+}
+
+.text_13 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+
+  color: #B169F3;
+}
+
+.text_14 {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 31px;
+  text-align: center;
+  color: #000000;
+}
+
+
+.text_16 {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+
+  color: #080F1D;
+}
+
+.text_17 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+
+  color: #080F1D;
+}
+
+.text_18 {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #000000;
+}
+
+.text_19 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #000000;
+}
+
+.text_20 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+
+  color: #B169F3;
+}
+
+
+//Правильно или нет, на странице с заданиями
+.red-color {
+  color: #FF0000;
+}
+
+.green-color {
+  color: #14FF00;
+}
+.text_21 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

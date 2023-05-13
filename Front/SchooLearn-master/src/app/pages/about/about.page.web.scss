@@ -1,0 +1,205 @@
+.about {
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.acquaintance {
+  padding-bottom: 100px;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    //grid-template-rows: 200px 200px; // нужно будет раскомментировать, когда Юля согласиться поменять на 400
+    grid-template-rows: 211px 211px;
+  }
+
+  &__image-box {
+    margin-left: auto;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 85px;
+    color: #000000;
+
+    &-box {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 1;
+      grid-row-end: 2;
+    }
+  }
+
+  &__text {
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 31px;
+    color: var(--dark_purple);
+
+    &-box {
+      margin-top: auto;
+
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 2;
+      grid-row-end: 3;
+    }
+  }
+}
+
+.lessons {
+  &__subtitle {
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 56px;
+    color: var(--black);
+  }
+
+  //&__wrapper {
+  //  padding: 15px;
+  //  margin: 100px;
+  //  display: grid;
+  //  grid-template-columns: repeat(2, 1fr);
+  //  grid-template-rows: 370px 30px;
+  //  column-gap: 200px;
+  //  row-gap: 50px;
+  //}
+
+  &__wrapper {
+    padding: 15px;
+    margin: 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 200px;
+    &-interior {
+      display: grid;
+      grid-template-rows: 370px 50px;
+      row-gap: 50px;
+    }
+  }
+
+  &__image {
+    margin: 0 auto;
+  }
+
+  &__subject{
+    margin: 0 auto;
+    width: 215px;
+    height: 47px;
+    background: #B5FBD6;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__subject p{
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    color: var(--black);
+  }
+}
+
+.rating {
+  & p {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    text-align: center;
+    color: #000000;
+  }
+
+  &__wrapper {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 70px;
+    margin-bottom: 100px;
+
+    & h2 {
+      margin-bottom: 80px;
+      font-weight: 700;
+      font-size: 46px;
+      line-height: 56px;
+
+      color: var(--black);
+    }
+
+    & li {
+      list-style-type: disc;
+      margin-bottom: 1rem;
+      margin-left: 1.5rem;
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 31px;
+      color: var(--purple);
+    }
+  }
+}
+
+.reason {
+  &__question {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    text-align: center;
+    margin-bottom: 100px;
+  }
+
+  &__answer {
+    background: var(--light_purple);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 80px;
+    width: 975px;
+    margin: 0 auto 100px;
+
+    font-weight: 400;
+    font-size: 46px;
+    line-height: 56px;
+    padding: 60px 100px;
+    text-align: center;
+    color: var(--black);
+
+    &-prize {
+      color: var(--black);
+      font-weight: 700;
+    }
+  }
+}
+
+.wishes {
+  &-1 {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    text-align: center;
+    color: var(--black);
+    margin-bottom: 50px;
+  }
+
+  &-2 {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    text-align: center;
+    color: var(--dark_purple);
+  }
+}
+
+.small-box {
+  padding: 30px 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--black);
+
+  border-top: 2px solid #DBDCD7;
+  transform: rotate(0.06deg);
+}

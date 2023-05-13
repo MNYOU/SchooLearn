@@ -1,0 +1,39 @@
+.custom-button {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.custom-button.border {
+  border: 1px solid var(--purple);
+}
+
+// Цвета кнопок
+.custom-button.white {
+  background: var(--white);
+}
+
+.custom-button.green {
+  background: var(--green);
+}
+
+.custom-button.light_purple {
+  background: var(--light_purple);
+}
+
+.custom-button.nonstandard_green {
+  background: linear-gradient(82.66deg, var(--green) 14.42%, var(--light_purple) 88.67%);
+}
+
+.custom-button.nonstandard_grey {
+  background: linear-gradient(82.66deg, var(--grey) 14.42%, var(--light_purple) 88.67%);
+}
+
+// Радиусы кнопок
+.custom-button.small_radius {
+  border-radius: 20px
+}
+.custom-button.medium_radius {
+  border-radius: 25px
+}
+.custom-button.large_radius {
+  border-radius: 30px
+}

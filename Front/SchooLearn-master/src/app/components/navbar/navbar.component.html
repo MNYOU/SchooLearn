@@ -1,0 +1,7 @@
+<ul class="navigation">
+  <li class="navigation__item" *ngFor="let navLink of navList">
+    <a class="navigation__text-black" [routerLink]="[navLink.path]" routerLinkActive="activeLink">
+      {{navLink.title}}
+    </a>
+  </li>
+</ul>

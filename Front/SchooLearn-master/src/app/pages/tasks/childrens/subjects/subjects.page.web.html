@@ -1,0 +1,12 @@
+<div id="search-component">
+  <ul class="search-result">
+    <li *ngFor="let subject of subjects$ | async">
+      <button value="{{subject.name}}" (click)="goToTaskPage(subject)" >
+        <p>{{subject.name}}</p>
+      </button>
+    </li>
+  </ul>
+</div>
+
+
+

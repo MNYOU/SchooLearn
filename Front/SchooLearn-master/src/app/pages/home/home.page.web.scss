@@ -1,0 +1,166 @@
+.buttons-box {
+  margin: 70px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.base-content{
+  &__title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 41px;
+    position: absolute;
+    font-family: 'Raleway', serif;
+
+    &-1 {
+      width: 733px;
+      left: 70px;
+      top: 790px;
+    }
+
+    &-2 {
+      width: 740px;
+      left: 71px;
+      top: 1088px;
+    }
+
+    &-3 {
+      width: 650px;
+      left: 71px;
+      top: 1364px;
+    }
+  }
+
+
+  &__img {
+    position: absolute;
+    &-1 {
+      width: 92.45px;
+      height: 186.11px;
+      left: 369.51px;
+      top: 866px;
+    }
+
+    &-2 {
+      width: 97.62px;
+      height: 26.89px;
+      left: 866.46px;
+      top: 1133.37px;
+    }
+
+    &-3 {
+      width: 92.45px;
+      height: 186.11px;
+      left: 370.51px;
+      top: 1508px;
+    }
+  }
+
+  &__subtitle {
+    font-family: 'Raleway', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+
+    color: #547DF8;
+    position: absolute;
+    &-1 {
+      width: 738px;
+      left: 632px;
+      top: 895px;
+    }
+
+    &-2 {
+      width: 738px;
+      left: 633px;
+      top: 1239px;
+    }
+
+    &-3 {
+      width: 738px;
+      left: 633px;
+      top: 1536px;
+    }
+  }
+}
+
+.base-container {
+  height: 1040px;
+}
+
+.oval {
+  position: absolute;
+  width: 300px;
+  height: 150px;
+
+  border-radius: 150px/75px;
+
+  &__border-1 {
+    border: 1px dashed #BBBBBB;
+    transform: rotate(-26.11deg);
+    left: 857.87px;
+    top: 850px;
+  }
+
+  &__border-2 {
+    left: 103.82px;
+    top: 1050px;
+
+    border: 0.5px dashed #BBBBBB;
+    transform: rotate(18.84deg);
+  }
+
+  &__border-3 {
+    left: 911px;
+    top: 1486.02px;
+
+    border: 1px dashed #BBBBBB;
+    transform: rotate(-27.5deg);
+  }
+
+  &__teacher-1 {
+    background: rgba(125, 248, 84, 0.25);
+    transform: rotate(-8.91deg);
+    left: 857.87px;
+    top: 850px;
+  }
+  &__teacher-2 {
+    left: 103.82px;
+    top: 1050px;
+
+    background: rgba(248, 84, 125, 0.25);
+    transform: rotate(9.24deg);
+  }
+  &__teacher-3 {
+    left: 911px;
+    top: 1486.02px;
+
+    background: rgba(125, 248, 84, 0.25);
+    transform: rotate(-7.67deg);
+  }
+
+  &__student-1 {
+    left: 857.87px;
+    top: 850px;
+
+    background: rgba(248, 84, 125, 0.25);
+    transform: rotate(-8.91deg);
+  }
+  &__student-2 {
+    left: 103.82px;
+    top: 1050px;
+
+    background: rgba(125, 248, 84, 0.25);
+    transform: rotate(9.24deg);
+  }
+  &__student-3 {
+    left: 912px;
+    top: 1500px;
+
+    background: rgba(248, 84, 125, 0.25);
+    transform: rotate(-7.67deg);
+  }
+
+}

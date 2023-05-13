@@ -1,0 +1,41 @@
+.authorizationForm {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px 20px 0;
+
+  &__group {
+    margin-bottom: 20px;
+    input,
+    select {
+      width: 100%;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input.ng-touched.ng-invalid {
+      border: solid red 2px;
+    }
+    input.ng-touched.ng-valid {
+      border: solid green 2px;
+    }
+
+    select.ng-touched.ng-invalid {
+      border: solid red 2px;
+    }
+    select.ng-touched.ng-valid {
+      border: solid green 2px;
+    }
+  }
+
+  &__error {
+    color: white;
+    padding: 5px;
+    background: red;
+    margin-top: 5px;
+  }
+}
+
+
+

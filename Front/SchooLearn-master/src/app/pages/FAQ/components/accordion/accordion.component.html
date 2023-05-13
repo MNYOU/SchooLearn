@@ -1,0 +1,12 @@
+<div style="max-width: 800px; width: 90%; height: 100%;" class="py-20">
+  <accordion [collapsing]="collapsing">
+    <accordion-item *ngFor="let item of data" title="{{item.question}}">
+      <ng-template accordionContent>
+        <div class="p-4">
+          {{ item.answer }}
+        </div>
+      </ng-template>
+    </accordion-item>
+  </accordion>
+</div>
+

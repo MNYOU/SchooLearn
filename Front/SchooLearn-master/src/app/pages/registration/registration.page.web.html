@@ -1,0 +1,81 @@
+<!--<form-->
+<!--  class="registrationForm"-->
+<!--  [formGroup]="registrationForm"-->
+<!--  (ngSubmit)="onSubmitRegistration()"-->
+<!--&gt;-->
+<!--  <div class="registrationForm__group">-->
+<!--    <label for="name">Имя</label>-->
+<!--    <input-->
+<!--      id="name"-->
+<!--      type="text"-->
+<!--      name="name"-->
+<!--      [formControlName]="'userName'"-->
+<!--    >-->
+<!--    <div-->
+<!--      class="registrationForm__error"-->
+<!--      *ngIf="registrationForm.controls['userName'].invalid-->
+<!--         && registrationForm.controls['userName'].touched"-->
+<!--    >-->
+<!--      Обязательно для заполнения-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="registrationForm__group">-->
+<!--    <label for="email">Имя</label>-->
+<!--    <input-->
+<!--      id="email"-->
+<!--      type="email"-->
+<!--      name="email"-->
+<!--      [formControlName]="'userEmail'"-->
+<!--    >-->
+<!--    <div-->
+<!--      class="registrationForm__error"-->
+<!--      *ngIf="registrationForm.controls['userEmail'].invalid-->
+<!--      && registrationForm.controls['userEmail'].touched">-->
+<!--      Обязательно для заполнения или неверный формат-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="registrationForm__group">-->
+<!--    <label for="password">Пароль</label>-->
+<!--    <input-->
+<!--      id="password"-->
+<!--      type="password"-->
+<!--      [formControlName]="'userPassword'"-->
+<!--    >-->
+<!--    <div-->
+<!--      class="registrationForm__error"-->
+<!--      *ngIf="registrationForm.controls['userPassword'].invalid-->
+<!--      && registrationForm.controls['userPassword'].touched">-->
+<!--      Обязательно для заполнения и должно быть больше 7 символов.-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="registrationForm__group">-->
+<!--    <label for="phone">Телефон</label>-->
+<!--    <input-->
+<!--      id="phone"-->
+<!--      name="phone"-->
+<!--      type="tel"-->
+<!--      [formControlName]="'userPhone'"-->
+<!--    >-->
+<!--    <div-->
+<!--      class="registrationForm__error"-->
+<!--      *ngIf="registrationForm.controls['userPhone'].invalid-->
+<!--      && registrationForm.controls['userPhone'].touched">-->
+<!--      Обязательно для заполнения и ожидает номер телефона-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+<!--  <div>-->
+<!--    <button-->
+<!--      type="submit"-->
+<!--      [disabled]="registrationForm.invalid || registrationForm.disabled"-->
+<!--    >-->
+<!--      &lt;!&ndash;      (click)="onSubmit()"&ndash;&gt;-->
+<!--      &lt;!&ndash;    >&ndash;&gt;-->
+<!--      Создать-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</form>-->
+<div class="container regist">
+  <router-outlet></router-outlet>
+</div>

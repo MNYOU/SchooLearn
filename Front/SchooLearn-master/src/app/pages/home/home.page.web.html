@@ -1,0 +1,102 @@
+<app-head-unique-page/>
+<div class="buttons-box">
+  <app-information-role-buttons (studentInfo)="onStudentInfo($event)" />
+</div>
+<div class="container base-container">
+  <div *ngIf="!isStudentInfo">
+    <ng-container>
+      <div class="base-content__title-1 base-content__title">
+        Создайте комфортную среду для обучения
+      </div>
+      <div class="base-content__img-1 base-content__img">
+        <img src="assets/arrow1.png" alt="стрелка 1">
+      </div>
+
+      <div class="base-content__subtitle-1 base-content__subtitle">
+        Используйте SchooLearn, чтобы повысить мотивацию и повлиять на интерес и обучаемость учащихся
+      </div>
+      <div class="oval oval__teacher-1"></div>
+      <div class="oval oval__border-1"></div>
+    </ng-container>
+
+    <ng-container>
+      <div class="base-content__title-2 base-content__title">
+        Обогащайте учебный процесс новыми активностями
+      </div>
+      <div class="base-content__img-2 base-content__img">
+        <img src="assets/arrow2.png" alt="стрелка 2">
+      </div>
+
+      <div class="base-content__subtitle-2 base-content__subtitle">
+        Набор инструментов для преподавателей позволяет быстро и удобно создавать задания
+      </div>
+      <div class="oval oval__teacher-2"></div>
+      <div class="oval oval__border-2"></div>
+    </ng-container>
+
+    <ng-container>
+      <div class="base-content__title-3 base-content__title">
+        Создайте комфортную среду для обучения
+      </div>
+      <div class="base-content__img-3 base-content__img">
+        <img src="assets/arrow1.png" alt="стрелка 3">
+      </div>
+
+      <div class="base-content__subtitle-3 base-content__subtitle">
+        Используйте SchooLearn, чтобы повысить мотивацию и повлиять на интерес и обучаемость учащихся
+      </div>
+      <div class="oval oval__teacher-3"></div>
+      <div class="oval oval__border-3"></div>
+    </ng-container>
+  </div>
+
+
+
+  <div *ngIf="isStudentInfo">
+    <ng-container>
+      <div class="base-content__title-1 base-content__title">
+        Соревнуйтесь в решении заданий
+      </div>
+      <div class="base-content__img-1 base-content__img">
+        <img src="assets/arrow1.png" alt="стрелка 1">
+      </div>
+
+      <div class="base-content__subtitle-1 base-content__subtitle">
+        Выполняйте задания и зарабатывайте баллы, они помогут Вам продвинуться и занять самое высокое место в рейтинге
+      </div>
+      <div class="oval oval__student-1"></div>
+      <div class="oval oval__border-1"></div>
+    </ng-container>
+
+    <ng-container>
+      <div class="base-content__title-2 base-content__title">
+        Получите недостающие баллы в успеваемость
+      </div>
+      <div class="base-content__img-2 base-content__img">
+        <img src="assets/arrow2.png" alt="стрелка 2">
+      </div>
+
+      <div class="base-content__subtitle-2 base-content__subtitle">
+        Решайте доступные на платформе задания и набирайте баллы в рейтинг, чтобы получить дополнительные оценки
+      </div>
+      <div class="oval oval__student-2">
+      </div>
+      <div class="oval oval__border-2"></div>
+    </ng-container>
+
+    <ng-container>
+      <div class="base-content__title-3 base-content__title">
+        Решайте разные интересные задачи
+      </div>
+      <div class="base-content__img-3 base-content__img">
+        <img src="assets/arrow1.png" alt="стрелка 3">
+      </div>
+
+      <div class="base-content__subtitle-3 base-content__subtitle">
+        Решение задач порой может быть сложным, но это поможет вам развиваться и совершенствоваться, ведь обучение - это игра, в которой мы всегда выигрываем
+      </div>
+      <div class="oval oval__student-3"></div>
+      <div class="oval oval__border-3"></div>
+    </ng-container>
+  </div>
+</div>

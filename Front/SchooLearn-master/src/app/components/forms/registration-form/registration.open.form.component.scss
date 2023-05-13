@@ -1,0 +1,22 @@
+.registration-form {
+  &__box {
+    position: absolute;
+    right: 0;
+    width: 485px;
+    height: 409px;
+    margin-top: 50px;
+    background: #FFFFFF;
+    border: 2px solid #B5FBD6;
+    border-radius: 20px;
+
+    padding: 30px 20px;
+  }
+
+  &__control-box {
+    height: 100px;
+  }
+
+  &__butten-box {
+    margin-top: 50px;
+  }
+}
