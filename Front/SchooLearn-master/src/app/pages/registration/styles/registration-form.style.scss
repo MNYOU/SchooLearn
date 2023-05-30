@@ -36,6 +36,7 @@
   }
 
   &__control {
+    margin-top: 20px;
     background: #FFFFFF;
     border-radius: 25px;
     width: 940px;
@@ -73,7 +74,9 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 25px;
   padding: 11px 28px;
-
+  &__company {
+    margin-left: auto;
+  }
   &__text {
     font-style: normal;
     font-weight: 400;
@@ -86,11 +89,12 @@
 
   &__back {
     background: #FFFFFF;
-    border: 2px solid #D3AAF8;
+    border: 2px solid #7396FF;
   }
 
   &__next {
-    background: #D3AAF8;
+    background: #7396FF;
+    border: unset;
 
     &__img-box {
       display: flex;
@@ -102,4 +106,8 @@
       }
     }
   }
+}
+
+.form-box {
+  margin: 100px 0;
 }

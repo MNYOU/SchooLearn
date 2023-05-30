@@ -1,1 +1,17 @@
-<button (click)="openSubjects()">123</button>
+<div class="container subjects__container">
+  <div class="subjects__title-box">
+    <h2>
+      Выберите предмет
+    </h2>
+  </div>
+
+  <div class="subjects__box">
+    <div  *ngFor="let subject of subjects$ | async">
+      <a routerLink='{{subject.id}}'>
+        <div class="subject__box">
+          <p class="subject__box-name">{{subject.name}}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

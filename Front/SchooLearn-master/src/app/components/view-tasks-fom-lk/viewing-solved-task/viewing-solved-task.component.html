@@ -1,0 +1,9 @@
+<div *ngIf="solvedTask" class="task">
+  <p class="task__name"  style="width: 300px; margin-right: auto">{{solvedTask.name}}</p>
+  <div style="display: flex; justify-content: space-between; width: 400px; align-items: center">
+    <p class="task__score">
+      Оценка: {{solvedTask.scores}}
+    </p>
+    <a class="task__link" routerLink="/tasks/view-solved-task/{{solvedTask.id}}">Просмотр</a>
+  </div>
+</div>

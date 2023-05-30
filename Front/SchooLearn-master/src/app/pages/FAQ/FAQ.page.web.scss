@@ -1,0 +1,101 @@
+.btn {
+  display:block;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  border: 1px solid red;
+
+}
+
+.faq{
+  &__container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  &__subtitle {
+    border: 2px solid #547DF8;
+    border-radius: 25px;
+    padding: 30px 60px;
+
+    p {
+      font-family: 'Raleway', serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 26px;
+      line-height: 31px;
+      text-align: center;
+
+      color: #000000;
+    }
+  }
+
+  &__accordion {
+    padding: 60px;
+
+    &-item {
+      margin-top: 50px;
+    }
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+
+    h2 {
+      font-family: 'Raleway', serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 46px;
+      line-height: 54px;
+
+      color: #000000;
+    }
+  }
+}
+
+  .item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-text {
+      font-family: 'Raleway', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 26px;
+      line-height: 31px;
+
+      color: #000000;
+
+    }
+
+    &-button-box {
+      margin-left: 90px;
+      button {
+        display:block;
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        background: #7DF854;
+        border: unset;
+      }
+    }
+
+    &-answer {
+      margin-top: 15px;
+      border: 2px dashed #7DF854;
+      border-radius: 25px;
+      padding: 20px;
+
+      p {
+        font-family: 'Raleway', serif;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21px;
+        color: #000000;
+      }
+    }
+  }
+

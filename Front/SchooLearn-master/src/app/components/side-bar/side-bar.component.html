@@ -1,0 +1,53 @@
+<div class="side-bar">
+  <div class="side-bar__box">
+    <div class="side-bar__circle"></div>
+    <div class="side-bar__text">
+      <div class="side-bar__nickname">
+        <p>{{nickname}}</p>
+        <div class="side-bar__nickname-edit" >
+          <button #toggleButton style="background: unset; border: unset;" (click)="editNickname()">
+            <img src="assets/edit.svg" alt="кнопка изменения имени"/>
+          </button>
+
+        </div>
+
+      </div>
+      <div *ngIf="isEditNickname" class="side-bar__edit-nickname" #menu>
+          <p>Новый 'nickname':</p>
+          <input [(ngModel)]="newNickName">
+          <div>
+            <button (click)="changeNickName()">
+              <p>
+                изменить
+              </p>
+            </button>
+          </div>
+      </div>
+      <div class="side-bar__role">
+        <p *ngIf="role === 'teacher'">Преподаватель</p>
+        <p *ngIf="role !== 'teacher'">{{role}}</p>
+      </div>
+    </div>
+    <div *ngIf="subjects$ | async as subjects" >
+
+      <div class="side-bar__subjects">
+        <p>
+          Предметы
+        </p>
+        <div class="side-bar__subject" *ngFor="let subject of subjects.slice((currentPage - 1) * productsPerPage, currentPage * productsPerPage)">
+          <button [ngClass]="{active: selectedSubjectId === subject.id}" (click)="emitSubject(subject.id)">
+            {{subject.name}}
+          </button>
+        </div>
+        <app-pagination
+          [productLength]="subjects.length"
+          [productsPerPage]="productsPerPage"
+          (pageChange)="onPageChange($event)"
+        >
+        </app-pagination>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,44 @@
+.task {
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    font-family: 'Raleway', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #000000;
+  }
+
+  &__date {
+    font-family: 'Raleway', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #000000;
+  }
+
+  &__score {
+    font-family: 'Raleway', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #000000;
+  }
+
+  &__link {
+    font-family: 'Raleway', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #547DF8;
+  }
+}

@@ -6,5 +6,14 @@ import { Component } from "@angular/core";
   styleUrls: ["FAQ.page.web.scss"]
 })
 export class FAQPageWeb{
+  open: number = 0;
 
+  openQuestion(idQuestion: number) {
+    if(this.open !== idQuestion) {
+      this.open = idQuestion;
+    }
+    else {
+      this.open = 0;
+    }
+  }
 }

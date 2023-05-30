@@ -1,0 +1,9 @@
+<div *ngIf="task" class="task">
+  <p class="task__name" style="width: 300px; margin-right: auto">{{task.name}}</p>
+  <div style="display: flex; justify-content: space-between; width: 400px; align-items: center">
+    <p class="task__date">
+      Дедлайн: {{task.deadline | date}}
+    </p>
+    <a class="task__link" routerLink="/tasks/view-solved-task/{{task.id}}" [queryParams]="{role: 'teacher'}">Просмотр</a>
+  </div>
+</div>

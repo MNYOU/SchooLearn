@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder} from "@angular/forms";
+import {InfoLkFromTeacherService} from "../../../../modules/info-lk/info-lk-from-teacher.service";
+import {Observable} from "rxjs";
+import {ISubject} from "../../../../modules/info-lk/info.interfases";
 
 @Component({
   selector: 'app-tasks-home',
@@ -7,9 +11,17 @@ import {Router} from "@angular/router";
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksPageWeb {
-  constructor(private _router: Router) {
+  constructor(private formBuilder: FormBuilder,
+              private infoLkFromTeacherService: InfoLkFromTeacherService,
+              private route: ActivatedRoute,
+              private router: Router) { }
+  subjects$?: Observable<ISubject[]>
+
+  ngOnInit() {
+    this.subjects$ = this.infoLkFromTeacherService.getSubjects();
   }
-  openSubjects(): void {
-    this._router.navigate(['/tasks/subjects']).then();
+
+  clickSubject(subject: ISubject) {
+
   }
 }

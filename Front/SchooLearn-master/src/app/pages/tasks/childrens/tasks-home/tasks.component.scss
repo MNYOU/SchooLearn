@@ -1,0 +1,58 @@
+.subject {
+  &__box {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100px;
+    background: #7396FF;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+
+    &-name {
+      font-family: 'Raleway', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 23px;
+      text-align: center;
+
+      color: #FFFFFF;
+    }
+  }
+}
+
+
+.subjects {
+  &__box {
+
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    column-gap: 75px;
+    row-gap: 25px;
+    width: 1300px;
+  }
+
+  &__container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  &__title-box {
+    display: flex;
+    justify-content: center;
+    h2 {
+      font-family: 'Raleway', serif;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 28px;
+
+      color: #000000;
+
+    }
+  }
+}

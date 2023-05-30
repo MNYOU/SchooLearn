@@ -1,0 +1,22 @@
+<div  *ngIf="appTasks$ | async as appTasks">
+  <div *ngIf="id !== 0">
+    <div class="jobs__title">
+      <p>
+        Просмотр назначенных заданий
+      </p>
+    </div>
+
+    <div class="jobs">
+      <div *ngIf="appTasks.length === 0 " class="jobs__free">
+        <p>
+          Когда Вы создадите задание, оно отобразится здесь
+        </p>
+      </div>
+      <ul *ngIf="appTasks.length !== 0">
+        <li class="jobs__task" *ngFor="let appTask of appTasks; let last = last" [class.last]="last">
+          <app-view-assigned-task-for-teacher [task]="appTask"/>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

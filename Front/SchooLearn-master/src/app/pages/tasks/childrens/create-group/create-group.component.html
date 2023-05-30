@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="create-subject__text-box">
+    <h2>
+      Создайте группу
+    </h2>
+    <p>
+      Название группы
+    </p>
+    <input [(ngModel)]="currentGroupName" placeholder="Введите название группы">
+  </div>
+
+  <div class="create-subject__buttons-box">
+    <button
+      (click)="backPhase()"
+      class="create-subject__button">
+      <img width="24" height="24" src="/assets/back-arrow.svg" alt="back">
+      <p class="form-button__text">
+        Назад
+      </p>
+    </button>
+
+    <button
+      (click)="createGroup()"
+      class="create-subject__button create-subject__create-button">
+      <p class="form-button__text">
+        Создать
+      </p>
+    </button>
+  </div>
+</div>

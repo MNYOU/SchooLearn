@@ -1,0 +1,111 @@
+<div class="container create-task__container">
+  <div *ngIf="phase === 1">
+    <div class="create-task__text-box">
+      <h2>
+        Выберите предмет, по которому будет создано задание
+      </h2>
+      <p>
+        Ваши предметы:
+      </p>
+    </div>
+
+    <div class="subjects__box">
+      <div  *ngFor="let subject of subjects$ | async">
+        <button [ngClass]="{active: selectedSubject?.name === subject.name}" class="subject-button__box" (click)="editSubject(subject)">
+          <p class="subject-button__name">{{subject.name}}</p>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="phase === 2" class="add-groups">
+    <div *ngIf="selectedSubject" style="display: flex; justify-content: space-between">
+      <h2>Выберите группу: </h2>
+      <a class="lk__create-group-link" routerLink="group/{{selectedSubject.id}}">
+        Создать группу
+      </a>
+    </div>
+    <div class="lk__find-group" *ngIf="groups$ | async as groups">
+      <select  class="lk__find-groups-text" [(ngModel)]="idGroup">
+        <option disabled selected [ngValue]="0">Выберите группу</option>
+        <option class="lk__find-group-text" *ngFor="let group of groups" [ngValue]="group.id">{{group.name}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div *ngIf="phase === 3">
+    <form [formGroup]="taskForm" (ngSubmit)="submit()" class="form">
+      <div class="form__header">
+        <h2>Создайте задание</h2>
+        <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid || loading">Создать</button>
+      </div>
+      <div style="display: flex; justify-content: space-between">
+        <div class="form-group form-checkbox">
+          <label for="is-extended">С расширенным ответом:</label>
+          <input [formControlName]="'isExtended'" type="checkbox" class="form-control checkbox" id="is-extended">
+        </div>
+        <div class="form-group form-checkbox">
+          <label for="is-public">Задание видно для всей платформы:</label>
+          <input type="checkbox" [formControlName]="'isPublic'" class="form-control" id="is-public">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Заголовок/название: </label>
+        <input type="text" [formControlName]="'name'" class="form-control" id="name">
+      </div>
+      <div class="form-group">
+        <label for="description">Условие задачи: </label>
+        <textarea [formControlName]="'description'" class="form-control" id="description"></textarea>
+      </div>
+      <div style="display: flex; gap: 30px">
+
+        <div class="form-group">
+          <label for="difficulty" >Уровень сложности:</label>
+          <select  [formControlName]="'difficulty'" class="form-control" id="difficulty">
+            <option value="Легкий">легкий</option>
+            <option value="Средний">средний</option>
+            <option value="Сложный">сложный</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="answer">Верный ответ: </label>
+          <input [formControlName]="'answer'" class="form-control" id="answer">
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="deadline">Дедлайн:</label>
+        <input type="date" [formControlName]="'deadline'" class="form-control" id="deadline">
+      </div>
+    </form>
+  </div>
+
+  <div class="create-subject__buttons-box">
+    <button
+      (click)="backPhase()"
+      class="create-subject__button">
+      <mat-icon>
+        chevron_left
+      </mat-icon>
+      <p class="form-button__text">
+        Назад
+      </p>
+    </button>
+
+    <button
+      *ngIf="phase !== 3"
+      [disabled]="!selectedSubject && phase === 1 || !idGroup && phase === 2"
+      (click)="nextPhase()"
+      class="create-subject__button">
+      <p class="form-button__text">
+        Далее
+      </p>
+      <mat-icon>
+        chevron_right
+      </mat-icon>
+    </button>
+  </div>
+</div>
+

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="create-subject__text-box">
+    <h2>
+      Создайте предмет
+    </h2>
+    <p>
+      Название предмета
+    </p>
+    <input [(ngModel)]="currentSubjectName" placeholder="Введите название предмета, которое хотите добавить">
+  </div>
+
+  <div class="create-subject__buttons-box">
+    <button
+      (click)="backPhase()"
+      class="create-subject__button">
+      <mat-icon>
+        chevron_left
+      </mat-icon>
+      <p class="form-button__text">
+        Назад
+      </p>
+    </button>
+
+    <button
+      (click)="createSubject()"
+      class="create-subject__button create-subject__create-button">
+      <p class="form-button__text">
+        Создать
+      </p>
+    </button>
+  </div>
+</div>

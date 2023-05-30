@@ -1,0 +1,90 @@
+<div class="container lk">
+  <app-side-bar nickname="{{nickName}}" role="teacher" (subjectId)="getGroupsSubject($event)"></app-side-bar>
+  <div class="lk__info" >
+    <div class="lk__title">
+      <h2>Информация</h2>
+    </div>
+    <div class="lk__student-info">
+      <div class="lk__navigate-info">
+        <p>Организация | <span>{{organization}}</span></p>
+      </div>
+      <div style="display: flex; align-items: center">
+        <div class="lk__find-group" *ngIf="groups$ | async as groups" style="margin-right: 25px">
+          <label class="lk__find-group-title">Группа:</label>
+          <select class="lk__find-group-text" [(ngModel)]="id" name="findGroup" (change)="onFindGroup()">
+            <option disabled selected [ngValue]="0">Выберите группу</option>
+            <option class="lk__find-group-text" *ngFor="let item of groups" [ngValue]="item.id">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="application-button-box" *ngIf="!!id">
+          <button class="application-button" (click)="onApplication()">
+            Заявки
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <div class="lk__group-code" *ngIf="key$ | async as key">
+      <div class="lk__key">
+        <div class="lk__key-img">
+          <img src="assets/key.svg" alt="key">
+        </div>
+        <p>Код для присоединения: {{key.code}}</p>
+      </div>
+      <div class="lk__generate-code">
+        <button (click)="onGetNewCodeGroup()">Сгенерировать новый</button>
+      </div>
+    </div>
+    <div class="lk__tasks" *ngIf="!isApplication">
+      <app-view-assigned-tasks-for-teacher [id]="id"/>
+      <div *ngIf="addedStudents">
+
+        <p class="student-title">Ученики</p>
+        <div class="students" >
+          <div *ngFor="let user of addedStudents.slice((currentPage - 1) * productsPerPage, currentPage * productsPerPage)" class="student">
+            <p class="student-name">{{user.nickname}}</p>
+            <p class="student-role">Ученик</p>
+          </div>
+          <app-pagination
+            [productLength]="addedStudents!.length"
+            [productsPerPage]="productsPerPage"
+            (pageChange)="onPageChange($event)"
+          >
+          </app-pagination>
+        </div>
+      </div>
+    </div>
+    <div class="lk__create-task-button-box" *ngIf="!isApplication">
+      <a routerLink="/tasks/create/subject">
+        <div class="lk__create-task-button">
+          <p>Создать задание</p>
+        </div>
+      </a>
+    </div>
+
+    <div *ngIf="isApplication" class="lk__application">
+      <p class="lk__application-title">
+        Запросы на вступление в класс:
+      </p>
+      <div *ngIf="students$ | async as students">
+        <div *ngFor="let student of students" style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+          <p class="lk__application-nickname">{{student.nickname}}</p>
+          <div style="display: flex; gap: 25px;">
+            <button (click)="add(student, true)" class="lk__button-add">
+              Принять
+            </button>
+            <button (click)="add(student, false)" class="lk__button-close">
+              Отклонить
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <div style="display: flex; justify-content: center; align-items: center; margin-top: 50px">
+        <button class="back-in-lk" (click)="this.isApplication = false">
+          В личный кабинет
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

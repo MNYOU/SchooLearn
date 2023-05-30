@@ -14,10 +14,11 @@ export class TokenInterceptor implements HttpInterceptor{
     if (this._auth.token !== null) {
       req = req.clone({
         setHeaders: {
-          Authorization: this._auth.token
+          Authorization: 'Bearer ' + this._auth.token
         }
       });
     }
+    console.log(req)
     return next.handle(req)
       .pipe(
       tap({
@@ -25,9 +26,11 @@ export class TokenInterceptor implements HttpInterceptor{
           (err: any) => {
             if (err instanceof HttpErrorResponse) {
               if (this._auth.isAuthenticated() && err.status !== 401) {
+                console.error("Ошибка в интерсепторе и при этом пользователь авторизован && err.status !== 401", err)
                 return;
               }
-              this._router.navigate(['authorization']);
+              console.error("Ошибка в интерсепторе", err)
+              this._router.navigate(['']);
             }
           }
       })

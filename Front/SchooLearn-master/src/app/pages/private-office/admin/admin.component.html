@@ -1,0 +1,25 @@
+<div class="container lk">
+  <app-side-bar nickname="{{nickName}}" role="Администратор"></app-side-bar>
+  <div class="lk__info">
+    <div class="lk__title">
+      <h2>Информация</h2>
+    </div>
+    <div class="lk__student-info">
+      <div class="lk__navigate-info">
+        <p>Организация | <span>{{organization}}</span></p>
+      </div>
+    </div>
+    <div class="lk__group-code" *ngIf="key$ | async as key">
+      <div class="lk__key">
+        <div class="lk__key-img">
+          <img src="assets/key.svg" alt="key">
+        </div>
+        <p>Код для присоединения: {{key.code}}</p>
+      </div>
+      <div class="lk__generate-code">
+        <button (click)="onGetNewCodeGroup()">Сгенерировать новый</button>
+      </div>
+    </div>
+  </div>
+
+</div>

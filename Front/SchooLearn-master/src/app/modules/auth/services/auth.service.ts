@@ -1,82 +1,109 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {BehaviorSubject, catchError, Observable, Subject, throwError} from "rxjs";
+import {HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { catchError, Observable, Subject, throwError } from "rxjs";
 import {tap} from "rxjs/operators"
-import {environment} from "../../../../environments/environment";
-import {AuthResponseInterface, IAuthUser} from "../interfaces/auth-response.interface";
 import {Router} from "@angular/router";
-import {User} from "../interfaces/user.interface";
-import {IRegistrationUser} from "../interfaces/registration/registration-user.interface";
 import { IAuthorizationUser} from "../interfaces/auth/athorization-user.interface";
 import {IAuthResponseUserInterface} from "../interfaces/auth/auth-responce-user.interface";
-import {Role} from "../enums/role.enum";
+import {Role } from "../enums/role.enum";
 import {IRegistrationOrganization} from "../interfaces/registration/registration-organization.interface";
-import {observableToBeFn} from "rxjs/internal/testing/TestScheduler";
 
-@Injectable()
-export class AuthService {
-  private _token: string | null = null;
+import {IRegistrationUser} from "../interfaces/registration/registration-user.interface";
+import {ISolvedTaskFullInfo} from "../../info-lk/info.interfases";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService  {
   public error$: Subject<string> = new Subject<string>();
-  private userSubject: BehaviorSubject<User | null>;
-  public user: Observable<User | null>;
 
-  constructor(private _http: HttpClient, private _router: Router) {
-    this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
-    this.user = this.userSubject.asObservable();
+  constructor(private _http: HttpClient, private _router: Router) { }
 
-    this.userSubject2 = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
+  registerStudent(user: IRegistrationUser): Observable<boolean> {
+    return this._http.post<boolean>('https://www.schoolearn.store/account/register', user) //TODO: ПОМЕНЯТЬ ПУТЬ
+  }
+  //
+  registerTeacher(user: IRegistrationUser): Observable<boolean> {
+    return this._http.post<boolean>('https://www.schoolearn.store/account/register', user) //TODO: ПОМЕНЯТЬ ПУТЬ
   }
 
-  register(user: IAuthUser): Observable<IAuthUser> {
-    return this._http.post<IAuthUser>('/regist', user) //TODO: ПОМЕНЯТЬ ПУТЬ
+  registerAdmin(user: IRegistrationUser): Observable<boolean> {
+    return this._http.post<boolean>('https://www.schoolearn.store/account/register', user) //TODO: ПОМЕНЯТЬ ПУТЬ
   }
 
-  login(user: IAuthUser): Observable<AuthResponseInterface> {
-    console.log(user);
-    //TODO: добавить прохи --proxy-config proxy.conf.json
-    return this._http.post<AuthResponseInterface>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`, user)
+  registerCompany(company: IRegistrationOrganization): Observable<boolean> {
+    return this._http.post<boolean>('https://www.schoolearn.store/institution/create', company)
+  }
+
+  getInstitution(): Observable<{ id: number, name: string }[]> {
+    return this._http.get<{ id: number, name: string }[]>(`https://www.schoolearn.store/institution/confirmed`)
+  }
+
+  login(user: IAuthorizationUser): Observable<IAuthResponseUserInterface> {
+    return this._http.post<IAuthResponseUserInterface>(`https://www.schoolearn.store/account/login`, user)
       .pipe(
-        tap((value) => {
+        tap((value: IAuthResponseUserInterface) => {
           console.log(value)
-          this.setToken(value);
+          const user:IAuthResponseUserInterface = value;
+          user.role = this.roleConverter(parseInt(value.role));
+          this.setToken(user);
         }),
         catchError(this.handleError.bind(this))
       )
   }
 
-  private setToken(response: AuthResponseInterface | null): void { //Сделал приватным, надеюсь ничего не упало )) упало)) сейчас не падает
-    if (response) {
-      if(!!response.expiresIn) {
-        const expDate: Date = new Date(new Date().getTime() + parseInt(response.expiresIn) * 1000);
-        localStorage.setItem('token-exp', expDate.toString());
+  get user() : IAuthResponseUserInterface | null {
+    const user = localStorage.getItem('user')
+    return user ? JSON.parse(user) : null;
+  }
+
+  private roleConverter(roleInNumber: number): Role {
+    console.log(roleInNumber)
+    switch (roleInNumber){
+      case 3: {
+        return Role.Teacher;
       }
-      this._token = response.idToken;
-      localStorage.setItem('token', response.idToken);
+      case 4: {
+        return Role.Student;
+      }
+      case 2: {
+        return Role.AdministratorTeacher;
+      }
+      default: {
+        console.error("ошибка в роли в методе roleConverter");
+        alert("ошибка авторизации")
+        return Role.NonUser;
+      }
+    }
+  }
+
+  private setToken(response: any | null): void {
+    if (response) {
+      // const user:IAuthResponseUserInterface = response;
+      // user.role = this.roleConverter(parseInt(response.role));
+      localStorage.setItem('loginTime', JSON.stringify(Date.now()))
+      localStorage.setItem('lifeTime', response.lifeTime)
+      localStorage.setItem('user', JSON.stringify(response));
+      localStorage.setItem('role', response.role);
+      localStorage.setItem('token', response.token.toString());
     } else {
       localStorage.clear();
-      this._token = null;
-      this.userSubject.next(null);
+      sessionStorage.clear();
     }
   }
 
-  get token() : string | null {
-    const strDateExp: string | null = localStorage.getItem('token-exp');
-    if (strDateExp !== null) {
-      if (new Date() > new Date(strDateExp)) {
-        this.logout();
-        return null;
-      }
+  navigateLk(role: Role): void {
+    switch (role) {
+      case Role.Teacher:
+        this._router.navigate(['/lk-teacher']).then(); // переход на лк
+        break;
+      case Role.Student:
+        this._router.navigate(['/lk-student']).then(); // переход на лк
+        break;
+      case Role.AdministratorTeacher:
+        this._router.navigate(['/lk-admin']).then(); // переход на лк
+        break;
     }
-    return localStorage.getItem('token');
-  }
-
-  get userValue() {
-    return this.userSubject.value;
-  }
-
-  isAuthenticated(): boolean { //TODO: сделать проверку валидности токена
-    return !!this.token;
-    // return this.token !== null;
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -95,92 +122,42 @@ export class AuthService {
     return throwError(error);
   }
 
-  logout() {
-    this.setToken(null); //TODO: сделать переадресацию на авторизацию
-  }
-
-  register2(user: IRegistrationUser): Observable<boolean> {
-    return this._http.post<boolean>('/regist', user) //Ведется работа над разделением на роли
-  }
-
-  registerCompany(company: IRegistrationOrganization): Observable<boolean> {
-    return this._http.post<boolean>('/registCompany', company)
-  }
-
-  login2(user: IAuthorizationUser): Observable<IAuthResponseUserInterface> {
-    console.log(user);
-    //TODO: добавить прохи --proxy-config proxy.conf.json
-    return this._http.post<IAuthResponseUserInterface>(`${environment.apiUrl}/users/authenticate`, user)
-      .pipe(
-        tap((value) => {
-          console.log(value)
-          this.setToken2(value);
-        }),
-        catchError(this.handleError.bind(this))
-      )
-  }
-
-  navigateLk(role: Role): void {
-    switch (role) {
-      case Role.Teacher:
-        this._router.navigate(['/lk-teacher']).then(); // переход на лк
-        break;
-      case Role.Student:
-        this._router.navigate(['/lk-student']).then(); // переход на лк
-        break;
-    }
-  }
-
-  private userSubject2: BehaviorSubject<IAuthResponseUserInterface | null>;
-
-  private setToken2(response: IAuthResponseUserInterface | null): void { //Сделал приватным, надеюсь ничего не упало )) упало))
-    if (response) {
-      if(!!response.expiresIn) {
-        const expDate: Date = new Date(new Date().getTime() + parseInt(response.expiresIn) * 1000);
-        localStorage.setItem('token-exp', expDate.toString());
-      }
-      this._token = response.idToken;
-      this.userSubject2.next(response);
-      localStorage.setItem('user', JSON.stringify(response));
-      localStorage.setItem('token', response.idToken);
-    } else {
-      localStorage.clear();
-      this._token = null;
-      this.userSubject.next(null);
-    }
-  }
-
-  get userValue2() {
-    let value = localStorage.getItem('user');
-    if (value)
-      return JSON.parse(value);
-    // return this.userSubject2.value;
-  }
-
-  get token2() : string | null {
-    const strDateExp: string | null = localStorage.getItem('token-exp');
-    if (strDateExp !== null) {
-      if (new Date() > new Date(strDateExp)) {
-        this.logout();
-        return null;
-      }
-    }
+  get token() : string | null {
     return localStorage.getItem('token');
   }
 
-  // isAuthenticated(): Observable<boolean> {
-  //   if(!this._token) {
-  //     return of(false);
-  //   }
-  //   return this._http.get("/api/users/isAuth") //TODO: ПОМЕНЯТЬ URL
-  //     .pipe(
-  //       switchMap((res: any) => {
-  //         return of(res.success);
-  //       }),
-  //       catchError(() => {
-  //         return of(false);
-  //       })
-  //     )
+  get role() : string | null {
+    return localStorage.getItem('role');
+  }
+
+  // isAuthenticated(): boolean {
+  //   return !!this.token;
   // }
 
+  isAuthenticated(): boolean {
+    const token = this.token;
+    if (!token) {
+      console.log(token)
+      return false;
+    }
+
+    const lifeTime = Number(localStorage.getItem('lifeTime'));
+    if (!lifeTime) {
+      return false;
+    }
+
+    const now = Date.now();
+    const expiredAt = lifeTime + Number(localStorage.getItem('loginTime'));
+    if (now >= expiredAt) {
+      alert("Вышло время токена, перезайдите")
+      this.logout();
+      return false;
+    }
+    return true;
+  }
+
+  logout() {
+    this._router.navigate(["/"]);
+    this.setToken(null); //TODO: сделать переадресацию на авторизацию
+  }
 }

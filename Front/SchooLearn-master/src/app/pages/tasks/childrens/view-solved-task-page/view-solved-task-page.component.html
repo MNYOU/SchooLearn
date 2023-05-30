@@ -1,0 +1,71 @@
+<div class="container" *ngIf="task$ | async as task">
+  <div class="task__section-1">
+    <div *ngIf="role">
+      <h3 class="task__title">{{task.subject.name}}</h3>
+      <p class="task__name">{{task.name}}</p>
+      <p class="task__difficulty">Уровень: {{task.difficulty.name}}</p>
+    </div>
+    <div *ngIf="!role">
+      <h3 class="task__title">{{task.subject}}</h3>
+      <p class="task__name">{{task.name}}</p>
+      <p class="task__difficulty">Уровень: {{task.difficulty}}</p>
+    </div>
+    <div class="task__date">
+      <p>
+        Выполнить до: <br/>{{task.deadline | date}}
+      </p>
+    </div>
+  </div>
+  <div class="task__section-2">
+    <div class="task__description">
+      <p>{{task.description}}</p>
+    </div>
+
+  </div>
+  <div class="task__section-3">
+    <div class="task__answer">
+      <p *ngIf="!role">
+        {{task.receivedAnswer}}
+      </p>
+      <p *ngIf="role">
+        {{task.answer}}
+      </p>
+    </div>
+<!--    <div class="task__result">-->
+<!--      <p *ngIf="task.scores > 0" class="task__result-properly">-->
+<!--        Верно-->
+<!--      </p>-->
+<!--      <p *ngIf="task.scores === 0" class="task__result-wrong">-->
+<!--        Неверно-->
+<!--      </p>-->
+<!--    </div>-->
+
+    <div class="task__result">
+      <div class="task__result-green" style="display: flex; gap: 10px" *ngIf="role">
+        <p>верно</p>
+        <p>{{calculateDifficulty(task.difficulty.name)}} / {{calculateDifficulty(task.difficulty.name)}}</p>
+      </div>
+      <div *ngIf="!role">
+        <div class="task__result-green" style="display: flex; gap: 10px" *ngIf="task.scores > 0">
+          <p>верно</p>
+          <p>{{calculateDifficulty(task.difficulty)}} / {{calculateDifficulty(task.difficulty)}}</p>
+        </div>
+
+        <div class="task__result-red" style="display: flex; gap: 10px" *ngIf="task.scores <= 0">
+          <p>неверно</p>
+          <p>0 / {{calculateDifficulty(task.difficulty)}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="task__section-4">
+    <button
+      (click)="backPhase()"
+      class="task__button">
+      <img width="24" height="24" src="/assets/back-arrow.svg" alt="back">
+      <p class="form-button__text">
+        Назад
+      </p>
+    </button>
+  </div>
+</div>

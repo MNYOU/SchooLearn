@@ -12,11 +12,13 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    const user = this._auth.userValue2;
-    if (this._auth.isAuthenticated() && user) {
+    console.log(route.data)
+    const userRole = this._auth.role;
+    if (this._auth.isAuthenticated() && userRole) {
       // check if route is restricted by role
+
       const {roles} = route.data;
-      if (roles && !roles.includes(user.role)) {
+      if (roles && !roles.includes(userRole)) {
         // role not authorized so redirect to home page
         alert("нет кабинета с такой ролью!")
         this._router.navigate(['/']);
@@ -25,7 +27,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
       console.log("Успешная авторизация");
       return of(true);
     } else {
-      this._router.navigate(['/authorization'], {
+      this._router.navigate(['/'], {
         queryParams: {
           accessDenied: true,
         },
@@ -38,6 +40,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     return this.canActivate(childRoute, state);
   }
 }
+
 
 
 

@@ -1,0 +1,11 @@
+@use '/src/app/pages/registration/styles/company.style.scss';
+@use '/src/app/pages/registration/styles/registration-form.style.scss';
+
+.registration-company-link {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  text-decoration-line: underline;
+
+  color: #7A7895;
+}

@@ -1,0 +1,112 @@
+<div class="container faq__container">
+  <div class="faq__title">
+    <h2>FAQ</h2>
+    <img style="margin-right: 70px" src="assets/faq.jpg" alt="faq image">
+  </div>
+  <div class="faq__subtitle">
+    <p>
+      Перед созданием обращения с Вашим вопросом рекомендуем ознакомиться с часто возникающими вопросами и ответами нашей команды на них, возможно ответ на свой вопрос вы найдете именно здесь
+    </p>
+  </div>
+  <div class="faq__accordion">
+    <div class="faq__accordion-item">
+      <div class="item">
+        <div class="item-text">
+          <p>
+            Я решаю задачи, но мой ник и баллы не появляются в рейтинге. Почему так происходит?
+          </p>
+        </div>
+        <div class="item-button-box">
+          <button (click)="openQuestion(1)">
+            <mat-icon *ngIf="open !== 1" fontIcon="expand_more"></mat-icon>
+            <mat-icon *ngIf="open === 1" fontIcon="expand_less"></mat-icon>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="open === 1" class="item-answer">
+        <p>
+          Возможно, Вы не авторизовались на платформе. Попробуйте войти в аккаунт (если у Вас нет аккаунта, то зарегистрировать его и авторизоваться) и проверить рейтинг. Если же Ваш ник и баллы не появляются в рейтинге и после авторизации, пожалуйста оставьте обращение по этой ссылке:
+        </p>
+      </div>
+    </div>
+
+    <div class="faq__accordion-item">
+      <div class="item">
+        <div class="item-text">
+          <p>
+            Что делать, если я нашел ошибку в условии или в ответе на задание?
+          </p>
+        </div>
+        <div class="item-button-box">
+          <button (click)="openQuestion(2)">
+            <mat-icon *ngIf="open !== 2" fontIcon="expand_more"></mat-icon>
+            <mat-icon *ngIf="open === 2" fontIcon="expand_less"></mat-icon>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="open === 2" class="item-answer">
+        <p>
+          Если Вы обнаружили ошибку в формулировке задания или в ответе на него, Вам необходимо обратиться к преподавателю Вашей образовательной организации по предмету, которому соответствует задание и попросить преподавателя исправить задание. Это можно сделать в личном кабинете представителя ОО, нажав на кнопку      (редактировать) в блоке с созданными заданиями        </p>
+      </div>
+    </div>
+
+    <div class="faq__accordion-item">
+      <div class="item">
+        <div class="item-text">
+          <p>
+            Что делать, если не работает какая-либо кнопка на сервисе?
+          </p>
+        </div>
+        <div class="item-button-box">
+          <button (click)="openQuestion(3)">
+            <mat-icon *ngIf="open !== 3" fontIcon="expand_more"></mat-icon>
+            <mat-icon *ngIf="open === 3" fontIcon="expand_less"></mat-icon>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="open === 3" class="item-answer">
+        <p>
+          Если возникли какие-либо проблемы с функционалом сайта, рекомендуем Вам сначала попробовать обновить сайт через пару минут, (возможно, в этот момент был перегружен сервер), если проблема не решилась, просим Вас оставить обращение, перейдя по ссылке Помощь      </div>
+    </div>
+
+    <div class="faq__accordion-item">
+      <div class="item">
+        <div class="item-text">
+          <p>
+            Я преподаватель (-ница) образовательной организации и отправил (-а) заявку на регистрацию ОО на платформе. Что делать, если мне не приходит ответ по заявке?
+        </div>
+        <div class="item-button-box">
+          <button (click)="openQuestion(4)">
+            <mat-icon *ngIf="open !== 4" fontIcon="expand_more"></mat-icon>
+            <mat-icon *ngIf="open === 4" fontIcon="expand_less"></mat-icon>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="open === 4" class="item-answer">
+        <p>
+          Запрос на регистрацию образовательной организации может обрабатываться до 3 рабочих дней. Если прошло больше 3-ёх рабочих дней и ответ всё еще не поступил Вам на почту, просим Вас оставить заявку повторно        </p>
+      </div>
+    </div>
+
+    <div class="faq__accordion-item">
+      <div class="item">
+        <div class="item-text">
+          <p>
+            Что я получу если буду решать задачи?
+          </p>
+        </div>
+        <div class="item-button-box">
+          <button (click)="openQuestion(5)">
+            <mat-icon *ngIf="open !== 5" fontIcon="expand_more"></mat-icon>
+            <mat-icon *ngIf="open === 5" fontIcon="expand_less"></mat-icon>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="open === 5" class="item-answer">
+        <p>
+          Если Вы являетесь учащимся организации, зарегистрированной на платформе SchooLearn, то решая задачи на сайте и пополняя своё количество баллов в рейтинге, Вы можете получить дополнительную оценку по предмету (в этом случае учитывается рейтинг по конкретному предмету), также Вы имеете возможность получить вознаграждение*, в случае если в конце определенного школой периода у Вас максимальное количество в общем рейтинге (в этом случае учитывается рейтинг по всем предметам вместе)        </p>
+      </div>
+    </div>
+  </div>
+</div>
+

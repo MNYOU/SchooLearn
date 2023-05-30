@@ -1,0 +1,20 @@
+<div class="pagination">
+  <button class="navigate" (click)="prevPage()" [disabled]="currentPage === 1">
+    <mat-icon>
+      chevron_left
+    </mat-icon>
+  </button>
+  <div *ngIf="totalPages() <= 3" style="display: flex">
+    <button *ngFor="let page of pages()" (click)="jumpToPage(page)" [ngClass]="{active: currentPage === page}">{{page}}</button>
+  </div>
+  <div *ngIf="totalPages() > 3" style="display: flex">
+    <button *ngFor="let page of visiblePages()" (click)="jumpToPage(page)" [ngClass]="{active: currentPage === page}">{{page}}</button>
+    <span *ngIf="canJumpToNextPage()">...</span>
+    <button *ngIf="canJumpToNextPage()" (click)="jumpToPage(totalPages())">{{totalPages()}}</button>
+  </div>
+  <button class="navigate" (click)="nextPage()" [disabled]="currentPage === totalPages()">
+    <mat-icon>
+      chevron_right
+    </mat-icon>
+  </button>
+</div>

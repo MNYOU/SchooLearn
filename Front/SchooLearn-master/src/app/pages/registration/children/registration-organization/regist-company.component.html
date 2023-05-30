@@ -1,0 +1,104 @@
+<div class="form-box">
+  <form
+    class="registrationForm"
+    [formGroup]="registrationForm"
+    (ngSubmit)="onSubmitRegistration()"
+  >
+    <div class="alert alert-danger" *ngIf="_authService.error$ | async as error">
+      {{error}}
+    </div>
+
+    <div class="registrationForm__group">
+      <div class="registrationForm__controls-box">
+        <div class="registrationForm__control-box">
+          <label for="email" class="registrationForm__label" [ngStyle]="{'color': registrationForm.controls['companyEmail'].touched && registrationForm.controls['companyEmail'].invalid ? 'red' : 'black'}" >Введите email (на почту придёт письмо с подтверждением)</label>
+          <input
+            class="registrationForm__control"
+            id="email"
+            type="email"
+            name="email"
+            [formControlName]="'companyEmail'"
+          >
+          <div
+            class="registrationForm__error"
+            *ngIf="registrationForm.controls['companyEmail'].invalid
+        && registrationForm.controls['companyEmail'].touched">
+            Обязательно для заполнения или неверный формат
+          </div>
+        </div>
+        <div class="registrationForm__control-box">
+          <label for="name" [ngStyle]="{'color': registrationForm.controls['companyName'].touched && registrationForm.controls['companyName'].invalid ? 'red' : 'black'}" class="registrationForm__label">Введите полное название ОО *</label>
+          <input
+            class="registrationForm__control"
+            id="name"
+            type="text"
+            name="name"
+            [formControlName]="'companyName'"
+          >
+          <div
+            class="registrationForm__error"
+            *ngIf="registrationForm.controls['companyName'].invalid
+           && registrationForm.controls['companyName'].touched"
+          >
+            Обязательно для заполнения
+          </div>
+        </div>
+        <div class="registrationForm__control-box">
+          <label for="INN" [ngStyle]="{'color': registrationForm.controls['companyINN'].touched && registrationForm.controls['companyINN'].invalid ? 'red' : 'black'}" class="registrationForm__label">Введите ИНН ОО *</label>
+          <input
+            class="registrationForm__control"
+            id="INN"
+            type="number"
+            name="INN"
+            [formControlName]="'companyINN'"
+          >
+          <div
+            class="registrationForm__error"
+            *ngIf="registrationForm.controls['companyINN'].invalid
+           && registrationForm.controls['companyINN'].touched"
+          >
+            Обязательно для заполнения
+          </div>
+        </div>
+        <div class="registrationForm__control-box">
+          <label for="name" [ngStyle]="{'color': registrationForm.controls['companyUrl'].touched && registrationForm.controls['companyUrl'].invalid ? 'red' : 'black'}" class="registrationForm__label">Введите адрес официального сайта ОО *</label>
+          <input
+            class="registrationForm__control"
+            id="url"
+            type="url"
+            name="url"
+            [formControlName]="'companyUrl'"
+          >
+          <div
+            class="registrationForm__error"
+            *ngIf="registrationForm.controls['companyUrl'].invalid
+           && registrationForm.controls['companyUrl'].touched"
+          >
+            Обязательно для заполнения
+          </div>
+        </div>
+      </div>
+      <div class="registrationForm__subtext-box">
+        <app-subtext class="registrationForm__subtext-box">
+          * Образовательная организация
+        </app-subtext>
+      </div>
+      <div class="buttons-box">
+        <button
+          class="form-button form-button__next form-button__company"
+          type="submit"
+          [disabled]="registrationForm.invalid || submitted || registrationForm.disabled"
+        >
+          <div class="form-button__next__img-box">
+            <p class="form-button__text">
+              Отправить запрос
+            </p>
+            <mat-icon>
+              chevron_right
+            </mat-icon>
+          </div>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

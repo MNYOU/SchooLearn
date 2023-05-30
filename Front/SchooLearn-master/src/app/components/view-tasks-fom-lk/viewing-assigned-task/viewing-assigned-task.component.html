@@ -1,0 +1,11 @@
+<div *ngIf="appTask" class="task">
+  <p class="task__name" style="width: 300px; margin-right: auto">
+    {{appTask.name}}
+  </p>
+  <div style="display: flex; justify-content: space-between; width: 400px; align-items: center">
+    <p class="task__date" style="width: 300px; margin-right: auto">
+      Выполнить до:{{appTask.deadline | date}}
+    </p>
+    <a class="task__link" routerLink="/tasks/view-assigned-task/{{appTask.id}}">Начать выполнение</a>
+  </div>
+</div>

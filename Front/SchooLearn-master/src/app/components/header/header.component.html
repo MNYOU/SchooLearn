@@ -6,24 +6,26 @@
     <nav class="header__list">
       <app-navbar/>
     </nav>
-    <a class="header__account" [routerLink]="['/lk']" *ngIf="nickname">
+    <button class="header__account" (click)="goToLK()" *ngIf="nickname">
       <span >
         {{nickname}}
       </span>
-    </a>
-    <button
-      (click)="showForm()"
-      custom-button
-            radius="medium"
-            color="white"
-            border="border"
-            padding="small" class="header__btn-text btn-open">
-      <span>Войти</span>
     </button>
-    <ng-container
-         *ngIf="isFormVisible">
-      <app-login-form (registrationForm)="registrationForm()" *ngIf="isFormVisible && loginForm"></app-login-form>
-      <app-registration-form (redirectRegistrationPage)="showForm()" *ngIf="isFormVisible && !loginForm"></app-registration-form>
+    <ng-container *ngIf="!isEntered">
+      <button class="log-reg__button log-reg__text" #toggleButton (click)="toggleMenu()">
+        Войти
+      </button>
+
+      <div class="menu" *ngIf="isMenuOpen" #menu>
+        <app-login-registration-form (onOpenRegistrationChanged)="openRegistrationChanged()"
+                                     (onLogin)="onLogin($event)"
+                                     (onCloseForm)="toggleMenu()"/>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="isEntered">
+      <button class="log-reg__button log-reg__text" #toggleButton (click)="exit()">
+        Выйти
+      </button>
     </ng-container>
   </header>
 </div>

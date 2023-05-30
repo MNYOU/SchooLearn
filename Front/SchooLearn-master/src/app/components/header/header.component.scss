@@ -1,5 +1,5 @@
 .header {
-  background-color: #547DF8;
+  background-color: #FFFFFF;
   border-bottom: 0.5px solid #DBDCD7;
   transform: rotate(0.08deg);
   &__box {
@@ -15,6 +15,9 @@
   }
 
   &__account {
+    background: unset;
+    border: unset;
+    margin-right: 25px;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
@@ -92,11 +95,4 @@
   line-height: 21px;
 
   color: #000000;
-}
-
-.btn-open {
-  background-color: unset;
-  border: 0.5px solid #000000;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 25px;
 }

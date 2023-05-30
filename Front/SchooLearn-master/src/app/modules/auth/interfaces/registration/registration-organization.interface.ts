@@ -1,10 +1,10 @@
 export interface IRegistrationOrganization {
-  readonly email: string;
   readonly name: string;
-  readonly inn: number;
-  readonly addressUrl: string;
+  readonly email: string;
+  readonly tin: number;
+  readonly webAddress: string;
 }
 
 export class RegistrationOrganization implements IRegistrationOrganization{
-  constructor(readonly email: string, readonly name: string, readonly inn: number, readonly addressUrl: string) { }
+  constructor(readonly name: string, readonly email: string, readonly tin: number, readonly webAddress: string) { }
 }

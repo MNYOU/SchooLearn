@@ -41,7 +41,7 @@ export class LoginPageWeb implements OnDestroy, OnInit {
       this.authorizationForm.controls["userPassword"].value,
     );
     this.authorizationForm.disable();
-    this._asyncSubscribe = this._authService.login2(data).subscribe({
+    this._asyncSubscribe = this._authService.login(data).subscribe({
       next: (value) => {
         this._authService.navigateLk(value.role)
         this.authorizationForm.reset();
@@ -67,7 +67,6 @@ export class LoginPageWeb implements OnDestroy, OnInit {
     //     console.log('done');
     //   },
   }
-
   ngOnDestroy(): void {
     if(this._asyncSubscribe)
       this._asyncSubscribe.unsubscribe();

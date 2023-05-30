@@ -1,0 +1,177 @@
+.side-bar {
+  padding: 50px 30px;
+  background: #E6E6E6;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 25px;
+  width: 327px;
+  display: flex;
+  justify-content: center;
+
+  &__edit-nickname {
+    display: block;
+    position: absolute;
+    top: 400px;
+    left: 250px;
+    padding: 25px 15px;
+    background: #FFFFFF;
+    border: 2px solid #7396FF;
+    border-radius: 20px;
+
+    p {
+      font-family: 'Raleway', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 21px;
+
+      color: #000000;
+    }
+
+    div {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      button {
+        padding: 10px 20px;
+        background: linear-gradient(82.66deg, #7DF854 14.42%, #7396FF 88.67%);
+        border: 1px solid #7396FF;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 20px;
+
+        p {
+          font-family: 'Raleway', serif;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 21px;
+          /* identical to box height */
+
+
+          color: #000000;
+        }
+      }
+    }
+    input {
+      margin-top: 20px;
+      background: rgba(217, 217, 217, 0.27);
+      border: 1px solid #547DF8;
+      border-radius: 10px;
+      padding: 10px 15px;
+    }
+  }
+
+  &__subjects {
+    margin-top: 25px;
+    background: #FFFFFF;
+    border-radius: 25px;
+    padding: 15px 30px;
+    width: 267px;
+
+    p {
+      font-family: 'Raleway', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 26px;
+    }
+  }
+
+  &__subject {
+    color: #000000;
+    margin-top: 20px;
+
+    button {
+      font-family: 'Raleway', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+
+      width: 100%;
+      height: 43px;
+
+      background: white;
+      border: unset;
+      border-radius: 25px;
+    }
+  }
+
+  &__circle {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 25px;
+
+    background: #FFFFFF;
+    border: 1px solid #F5F5F5;
+    border-radius: 50%;
+  }
+
+  &__nickname {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Raleway', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 26px;
+
+      color: #000000;
+    }
+
+    &-edit {
+      margin-left: 25px;
+    }
+  }
+
+  &__role {
+    display: flex;
+    justify-content: center;
+
+    p {
+      font-family: 'Raleway', serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 21px;
+
+      color: #547DF8;
+    }
+  }
+}
+
+.active {
+  background: #7396FF !important;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: #7396FF !important;
+}
+
+.application-button-box{
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    border: unset;
+    background: unset;
+    font-family: 'Raleway', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+
+    color: #000000;
+
+  }
+}
